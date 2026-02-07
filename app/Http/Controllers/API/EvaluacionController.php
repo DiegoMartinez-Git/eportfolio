@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\CicloFormativo;
 use Illuminate\Http\Request;
-use App\Http\Resources\CicloFormativoResource;
 use App\Models\Evidencia;
 use App\Models\Evaluacion;
 use App\Http\Resources\EvaluacionResource;

@@ -20,7 +20,7 @@ class FamiliaProfesionalFactory extends Factory
     {
         return [
             'nombre' => $this->faker->word(),
-            'codigo' => $this->faker->word(),
+            'codigo' => $this->faker->unique()->word(),
             'descripcion' => $this->faker->text(),
         ];
     }

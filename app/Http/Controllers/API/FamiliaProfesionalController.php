@@ -15,8 +15,13 @@ class FamiliaProfesionalController extends Controller
      */
     public function index(Request $request)
     {
+        $query = FamiliaProfesional::query();
+        if ($request->search) {
+            $query->where('nombre', 'like', '%' . $request->search . '%');
+        }
+
         return FamiliaProfesionalResource::collection(
-            FamiliaProfesional::orderBy($request->sort ?? 'id', $request->order ?? 'asc')
+            $query->orderBy($request->sort ?? 'id', $request->order ?? 'asc')
                 ->paginate($request->per_page)
         );
     }
@@ -26,9 +31,13 @@ class FamiliaProfesionalController extends Controller
      */
     public function store(Request $request)
     {
-        $familiaProfesional = json_decode($request->getContent(), true);
+        $validatedData = $request->validate([
+            'nombre'      => 'required|string|max:255',
+            'codigo'      => 'required|string|unique:familias_profesionales,codigo', 
+            'descripcion' => 'nullable|string',
+        ]);
 
-        $familiaProfesional = FamiliaProfesional::create($familiaProfesional);
+        $familiaProfesional = FamiliaProfesional::create($validatedData);
 
         return new FamiliaProfesionalResource($familiaProfesional);
     }
@@ -46,8 +55,7 @@ class FamiliaProfesionalController extends Controller
      */
     public function update(Request $request, FamiliaProfesional $familiaProfesional)
     {
-        $familiaProfesionalData = json_decode($request->getContent(), true);
-        $familiaProfesional->update($familiaProfesionalData);
+        $familiaProfesional->update($request->all());
 
         return new FamiliaProfesionalResource($familiaProfesional);
     }
@@ -59,7 +67,9 @@ class FamiliaProfesionalController extends Controller
     {
         try {
             $familiaProfesional->delete();
-            return response()->json(null, 204);
+            return response()->json([
+                'message' => 'FamiliaProfesional eliminado correctamente'
+            ], 200);
         } catch (\Exception $e) {
             return response()->json([
                 'message' => 'Error: ' . $e->getMessage()
