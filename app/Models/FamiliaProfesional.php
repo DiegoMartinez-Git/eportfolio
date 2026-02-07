@@ -14,4 +14,8 @@ class FamiliaProfesional extends Model
           'codigo',
           'descripcion',
      ];
+     public function ciclosFormativos()
+     {
+          return $this->hasMany(CicloFormativo::class);
+     }
 }

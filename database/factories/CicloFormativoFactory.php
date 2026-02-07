@@ -22,7 +22,7 @@ class CicloFormativoFactory extends Factory
             'familia_profesional_id' => \App\Models\FamiliaProfesional::factory(),
             'nombre' => $this->faker->word(),
             'codigo' => $this->faker->word(),
-            'grado' => $this->faker->randomElement(['BÁSICA', 'G.M.', 'G.S.', 'C.E. (G.M.)', 'C.E. (G.S.)']),
+            'grado' => $this->faker->randomElement(['basico', 'medio', 'superior']),
             'descripcion' => $this->faker->text(),
         ];
     }

@@ -17,10 +17,17 @@ class CicloFormativo extends Model
         'descripcion',
     ];
     const GRADOS = [
-        'BÁSICA',
-        'G.M.',
-        'G.S.',
-        'C.E. (G.M.)',
-        'C.E. (G.S.)',
+        'basico',
+        'medio',
+        'superior',
     ];
+    public function familiaProfesional()
+    {
+        return $this->belongsTo(FamiliaProfesional::class);
+    }
+    public function resultadosAprendizaje()
+    {
+        return $this->hasMany(ResultadoAprendizaje::class);
+    }
+    
 }

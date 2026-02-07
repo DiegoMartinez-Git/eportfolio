@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\AsignacionRevision;
+use App\Models\ResultadoAprendizaje;
 
 
 /**
@@ -20,11 +21,12 @@ class CriterioEvaluacionFactory extends Factory
     public function definition(): array
     {
         return [
-            'resultado_aprendizaje_id' => \App\Models\ResultadoAprendizaje::factory(),
+            'resultado_aprendizaje_id' => ResultadoAprendizaje::factory(),
             'codigo' => $this->faker->word(),
             'descripcion' => $this->faker->text(),
             'peso_porcentaje' => $this->faker->numberBetween(1, 100),
             'orden' => $this->faker->numberBetween(1, 10)
+            
         ];
     }
 }
