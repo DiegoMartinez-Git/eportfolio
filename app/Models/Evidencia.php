@@ -11,8 +11,8 @@ class Evidencia extends Model
     protected $fillable = [
         'estudiante_id',
         'tarea_id',
-        'descripcion',
         'url',
+        'descripcion',
         'estado_validacion',
     ];
     const ESTADOS_VALIDACION = [

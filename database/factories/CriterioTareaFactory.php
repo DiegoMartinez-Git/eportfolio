@@ -20,8 +20,8 @@ class CriterioTareaFactory extends Factory
     public function definition(): array
     {
         return [
-            'criterio_evaluacion_id' => random_int(1, 88),
-            'tarea_id' => random_int(1,10)
+            'criterio_evaluacion_id' => \App\Models\CriterioEvaluacion::factory(),
+            'tarea_id' => \App\Models\Tarea::factory()
         ];
     }
 }

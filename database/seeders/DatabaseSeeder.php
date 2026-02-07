@@ -42,7 +42,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ModuloFormativoTableSeeder::class);
         $this->call(MatriculaTableSeeder::class);
         $this->call(ComentariosTableSeeder::class);
-        $this->call(AsignacionesTableSeeder::class);
+        $this->call(AsignacionesRevisionTableSeeder::class);
         $this->call(CriterioTareasTableSeeder::class);
 
         Model::reguard();

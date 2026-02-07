@@ -24,7 +24,7 @@ class TareaFactory extends Factory
     public function definition(): array
     {
         return [
-            'criterio_evaluacion_id' => random_int(1, 88),
+            'criterio_evaluacion_id' => \App\Models\CriterioEvaluacion::factory(),
             'fecha_apertura' => fake()->dateTimeBetween('-1 week', '+1 week'),
             'fecha_cierre' => fake()->dateTimeBetween('-1 week', '+1 week'),
             'activo' => fake()->boolean(),
@@ -36,7 +36,7 @@ class TareaFactory extends Factory
      */
     public function unverified(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn(array $attributes) => [
             'activo' => null,
         ]);
     }

@@ -15,8 +15,8 @@ class EvidenciaFactory extends Factory
     public function definition(): array
     {
         return [
-            'estudiante_id' => random_int(1, 10),
-            'tarea_id' => random_int(1, 10),
+            'estudiante_id' => \App\Models\User::factory(),
+            'tarea_id' => \App\Models\Tarea::factory(),
             'url' => fake()->url(),
             'descripcion' => fake()->text(),
             'estado_validacion' => fake()->randomElement(['pendiente', 'validada', 'rechazada']),

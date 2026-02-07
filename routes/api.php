@@ -14,7 +14,7 @@ use App\Http\Controllers\API\ModuloFormativoController;
 use App\Http\Controllers\API\MatriculaController;
 use App\Http\Controllers\API\EvidenciaController;
 use App\Http\Controllers\API\CriterioTareaController;
-use App\Http\Controllers\API\AsignacionController;
+use App\Http\Controllers\API\AsignacionRevisionController;
 use App\Http\Controllers\API\ComentariosController;
 use App\Http\Controllers\API\EvaluacionController;
 
@@ -70,10 +70,10 @@ Route::prefix('v1')->group(function () {
             'evidencias' => 'evidencia'
         ]);
 
-    Route::apiResource('evidencias.asignaciones-revision', AsignacionController::class)
+    Route::apiResource('evidencias.asignaciones-revision', AsignacionRevisionController::class)
         ->parameters([
             'evidencias' => 'evidencia',
-            'asignaciones-revision' => 'asignacion'
+            'asignaciones-revision' => 'asignacionRevision'
         ]);
 
     Route::apiResource('evidencias.comentarios', ComentariosController::class)
@@ -88,7 +88,7 @@ Route::prefix('v1')->group(function () {
             'evaluaciones-evidencias' => 'evaluacion'
         ]);
 
-    Route::get('users/{id}/asignaciones-revision', [AsignacionController::class, 'indexUserAsignacion']);
+    Route::get('users/{id}/asignaciones-revision', [AsignacionRevisionController::class, 'indexUserAsignacion']);
 
     Route::get('resultados-aprendizaje/{resultadoAprendizaje}/tareas', [TareaController::class, 'indexResultadoTarea']);
 

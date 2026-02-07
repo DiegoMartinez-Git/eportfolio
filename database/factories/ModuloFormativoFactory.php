@@ -23,8 +23,8 @@ class ModuloFormativoFactory extends Factory
             'curso_escolar' => fake()->word(),
             'centro' => fake()->word(),
             'descripcion' => fake()->text(),
-            'docente_id' => random_int(1, 10),
-            'ciclo_formativo_id' => random_int(1, 10),
+            'docente_id' => \App\Models\User::factory(),
+            'ciclo_formativo_id' => \App\Models\CicloFormativo::factory(),
         ];
     }
 }

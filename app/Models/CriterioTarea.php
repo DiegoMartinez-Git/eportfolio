@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CriterioTarea extends Model
 {
-        /** @use HasFactory<\Database\Factories\EvaluacionFactory> */
+        /** @use HasFactory<\Database\Factories\CriterioTareaFactory> */
         use HasFactory;
         protected $table = 'criterios_tareas';
         protected $fillable = [
