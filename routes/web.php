@@ -8,12 +8,29 @@ use App\Http\Controllers\ResultadosAprendizajeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FamiliasProfesionalesController;
 use App\Http\Controllers\EvidenciasController;
+use App\Http\Controllers\PortfolioImportController;
+
 
 Route::get('/', [HomeController::class, 'getHome'])
 ->name('home');
 Route::get('/criterios', [HomeController::class, 'getCriteriosEvaluacion']);
 Route::get('/resultados', [HomeController::class, 'getResultadosAprendizaje']);
 Route::get('/ciclos', [HomeController::class, 'getCiclosFormativos']);
+
+Route::middleware(['auth'])->group(function () {
+    // Formulario de importación
+    Route::get('/portfolio/import', [PortfolioImportController::class, 'showImportForm'])
+        ->name('portfolio.import.index');
+    
+    // Importar desde JSON Resume
+    Route::post('/portfolio/import/json-resume', [PortfolioImportController::class, 'importJsonResume'])
+        ->name('portfolio.import.json-resume');
+    
+    // Importar desde GitHub
+    Route::post('/portfolio/import/github', [PortfolioImportController::class, 'importGitHub'])
+        ->name('portfolio.import.github');
+});
+
 
 
 Route::get('/dashboard', function () {
